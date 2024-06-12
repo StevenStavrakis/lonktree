@@ -3,11 +3,13 @@
 // You might need to reference the SQLite documentation to determine what field types to use
 // For IDs, use non-integer types like UUID or GUID
 
-import { foreignKey, integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
+import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
 
 export const usersTable = sqliteTable("users", {
     id: text("id").primaryKey(),
-    name: text("name"),
+    fullName: text("full_name").notNull(),
+    firstName: text("first_name").notNull(),
+    lastName: text("last_name").notNull(),
     email: text("email"),
 });
 

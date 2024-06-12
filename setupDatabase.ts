@@ -17,18 +17,20 @@ const sqlite = new Database('lonktree_database.db', {
     readwrite: true
 });
 
-// create the drizzle client
-const db = drizzle(sqlite);
+try {
 
-// generate schema migrations
-await $`bunx drizzle-kit generate`;
+    // create the drizzle client
+    const db = drizzle(sqlite);
 
-// migrate the database
-migrate(db, {
-    migrationsFolder: "./drizzle"
-});
+    // push schema to database
+    await $`bunx drizzle-kit push`;
 
-// seed the database
-await seedDatabase(db);
+    // seed the database
+    await seedDatabase(db);
 
-await $`bun run --bun vite dev`;
+    await $`bun run --bun vite dev`;
+} catch (e) {
+    await $`rm lonktree_database.db`;
+    console.error(e);
+    process.exit(1);
+}
