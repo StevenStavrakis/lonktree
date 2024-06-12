@@ -2,7 +2,6 @@ import { $ } from 'bun';
 import { Database } from 'bun:sqlite';
 import { drizzle } from 'drizzle-orm/bun-sqlite';
 import { seedDatabase } from './seedDatabase';
-import { migrate } from 'drizzle-orm/bun-sqlite/migrator';
 
 // DO NOT CHANGE THIS FILE
 
@@ -18,7 +17,6 @@ const sqlite = new Database('lonktree_database.db', {
 });
 
 try {
-
     // create the drizzle client
     const db = drizzle(sqlite);
 

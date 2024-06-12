@@ -11,6 +11,7 @@ export const usersTable = sqliteTable("users", {
     firstName: text("first_name").notNull(),
     lastName: text("last_name").notNull(),
     email: text("email"),
+    username: text("username").notNull(),
 });
 
 export const linksTable = sqliteTable("links", {
