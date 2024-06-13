@@ -1,6 +1,8 @@
 import { Database } from "bun:sqlite"
 import { drizzle } from "drizzle-orm/bun-sqlite"
 
+// don't need to change this
+
 // load the database from the root of the project
 const sqlite = new Database("lonktree_database.db", {
     create: false,
